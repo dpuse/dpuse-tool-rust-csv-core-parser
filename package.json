@@ -1,6 +1,6 @@
 {
     "name": "@dpuse/dpuse-tool-rust-csv-core-parser",
-    "version": "0.1.39",
+    "version": "0.1.40",
     "private": false,
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
