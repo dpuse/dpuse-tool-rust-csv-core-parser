@@ -1,7 +1,7 @@
 {
     "id": "dpuse-tool-rust-csv-core-parser",
     "label": {
-        "en": "Rust CSV Parser"
+        "en": "Rust CSV Core Parser"
     },
     "description": {
         "en": [
@@ -12,5 +12,5 @@
     "iconDark": null,
     "statusId": "alpha",
     "typeId": "tool",
-    "version": "0.1.40"
+    "version": "0.1.41"
 }
