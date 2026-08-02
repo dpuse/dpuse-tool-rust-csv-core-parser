@@ -34,7 +34,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "dpuse-tool-rust-csv-core"
+name = "dpuse-tool-rust-csv-core-parser"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",

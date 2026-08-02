@@ -1,3 +1,3 @@
 [workspace]
-members = ["dpuse_tool_rust_csv_core"]
+members = ["dpuse_tool_rust_csv_core_parser"]
 resolver = "2"

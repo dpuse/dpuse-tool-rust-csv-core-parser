@@ -10,7 +10,7 @@
 import { ConnectorError } from '@dpuse/dpuse-shared/errors'; // TODO: This should be  Module or Tool error?
 
 // Tool dependencies - types.
-import type * as RustModule from '../rust/dpuse_tool_rust_csv_core/pkg/dpuse_tool_rust_csv_core.js';
+import type * as RustModule from '../rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js';
 
 /**
  * Tool configuration.
@@ -84,7 +84,7 @@ class Tool {
                 durationMs: performance.now() - startTime
             };
         } catch (error) {
-            throw new ConnectorError('Failed to process CSV stream.', 'dpuse-tool-rust-csv-core|Tool|processWithTransferableStream', { cause: error });
+            throw new ConnectorError('Failed to process CSV stream.', 'dpuse-tool-rust-csv-core-parser|Tool|processWithTransferableStream', { cause: error });
         }
     }
 
@@ -134,7 +134,7 @@ class Tool {
                 reader.releaseLock();
             }
         } catch (error) {
-            throw new ConnectorError('Failed to process CSV chunks.', 'dpuse-tool-rust-csv-core|Tool|processWithChunks', { cause: error });
+            throw new ConnectorError('Failed to process CSV chunks.', 'dpuse-tool-rust-csv-core-parser|Tool|processWithChunks', { cause: error });
         }
     }
 }
@@ -144,7 +144,7 @@ class Tool {
  */
 async function loadRustBindings(): Promise<RustBindings> {
     state.rustBindingsPromise ??= (async () => {
-        const module = await import('../rust/dpuse_tool_rust_csv_core/pkg/dpuse_tool_rust_csv_core.js');
+        const module = await import('../rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js');
         await module.default();
         return module;
     })();

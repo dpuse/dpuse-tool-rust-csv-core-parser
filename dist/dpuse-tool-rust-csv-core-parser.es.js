@@ -26,7 +26,7 @@ var e = class extends Error {
 				durationMs: performance.now() - c
 			};
 		} catch (e) {
-			throw new t("Failed to process CSV stream.", "dpuse-tool-rust-csv-core|Tool|processWithTransferableStream", { cause: e });
+			throw new t("Failed to process CSV stream.", "dpuse-tool-rust-csv-core-parser|Tool|processWithTransferableStream", { cause: e });
 		}
 	}
 	async processWithChunks(e, n = {}, r) {
@@ -50,17 +50,17 @@ var e = class extends Error {
 				t.releaseLock();
 			}
 		} catch (e) {
-			throw new t("Failed to process CSV chunks.", "dpuse-tool-rust-csv-core|Tool|processWithChunks", { cause: e });
+			throw new t("Failed to process CSV chunks.", "dpuse-tool-rust-csv-core-parser|Tool|processWithChunks", { cause: e });
 		}
 	}
 };
 async function a() {
 	return r.rustBindingsPromise ??= (async () => {
-		let e = await import("./dpuse_tool_rust_csv_core-Cg-lLWvX.js");
+		let e = await import("./dpuse_tool_rust_csv_core_parser-BwgIkyVB.js");
 		return await e.default(), e;
 	})(), r.rustBindingsPromise;
 }
 //#endregion
 export { i as Tool, n as config };
 
-//# sourceMappingURL=dpuse-tool-rust-csv-core.es.js.map
+//# sourceMappingURL=dpuse-tool-rust-csv-core-parser.es.js.map

@@ -1,5 +1,5 @@
 [package]
-name = "dpuse-tool-rust-csv-core"
+name = "dpuse-tool-rust-csv-core-parser"
 version = "0.1.0"
 edition = "2024"
 authors = ["Data Positioning <info@dpuse.app>"]
