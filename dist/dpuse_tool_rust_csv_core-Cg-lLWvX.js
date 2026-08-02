@@ -435,7 +435,8 @@ async function L(e, t) {
 		}
 		let r = await e.arrayBuffer();
 		return await WebAssembly.instantiate(r, t);
-	} else {
+	}
+	{
 		let n = await WebAssembly.instantiate(e, t);
 		return n instanceof WebAssembly.Instance ? {
 			instance: n,
@@ -468,4 +469,4 @@ async function z(e) {
 //#endregion
 export { e as CsvSession, t as IntoUnderlyingByteSource, n as IntoUnderlyingSink, r as IntoUnderlyingSource, z as default, i as init, R as initSync, a as process_csv_chunks, o as stream_csv };
 
-//# sourceMappingURL=dpuse_tool_rust_csv_core-DwJ1gYR7.js.map
+//# sourceMappingURL=dpuse_tool_rust_csv_core-Cg-lLWvX.js.map
