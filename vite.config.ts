@@ -20,7 +20,7 @@ export default defineConfig({
             external: ['@dpuse/dpuse-shared', /^https:\/\/engine-eu\.dpuse\.app\//],
             plugins: [Sonda({ filename: 'index', format: 'json', brotli: true, gzip: false, open: false, outputDir: './bundle-analysis-reports/sonda' })]
         },
-        sourcemap: true,
+        sourcemap: 'hidden',
         target: 'ESNext'
     },
     plugins: [dts({ outDirs: 'dist/types', entryRoot: 'src' })],
