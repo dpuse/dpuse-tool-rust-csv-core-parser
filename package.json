@@ -1,6 +1,6 @@
 {
     "name": "@dpuse/dpuse-tool-rust-csv-core-parser",
-    "version": "0.1.44",
+    "version": "0.1.45",
     "private": false,
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
@@ -36,7 +36,7 @@
         "fsevents@2.3.3": true,
         "sharp@0.34.5": true,
         "unrs-resolver@1.12.2": true,
-        "workerd@1.20260815.1": true
+        "workerd@1.20260918.1": true
     },
     "scripts": {
         "build": "npm run build:wasm && npx vite build",
@@ -48,20 +48,20 @@
         "sync": "node -e \"import('@dpuse/dpuse-development').then(m => m.syncProjectWithGitHub())\""
     },
     "dependencies": {
-        "@dpuse/dpuse-shared": "^0.3.777"
+        "@dpuse/dpuse-shared": "^0.3.809"
     },
     "devDependencies": {
-        "@dpuse/dpuse-development": "^0.3.705",
+        "@dpuse/dpuse-development": "^0.3.706",
         "@dpuse/eslint-config-dpuse": "^1.0.116",
-        "@types/node": "^26.2.0",
-        "eslint": "^10.8.1",
-        "prettier": "^3.9.6",
+        "@types/node": "^26.6.2",
+        "eslint": "^10.11.0",
+        "prettier": "^3.9.8",
         "sonda": "^0.14.0",
         "typescript": "^6.0.3",
-        "vite": "^8.2.2",
-        "vite-plugin-dts": "^5.0.3",
+        "vite": "^8.3.0",
+        "vite-plugin-dts": "^5.1.0",
         "vite-plugin-wasm": "^3.6.0",
-        "vitest": "^4.1.11",
-        "wrangler": "^4.124.0"
+        "vitest": "^5.0.1",
+        "wrangler": "^4.135.0"
     }
 }
