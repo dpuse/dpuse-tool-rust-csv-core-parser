@@ -5,7 +5,7 @@ import Sonda from 'sonda/vite';
 import { fileURLToPath, URL } from 'node:url';
 
 // ── Data
-import config from './config.json';
+import config from './config.json' with { type: 'json' };
 
 // ── Vite Configuration ───────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -18,12 +18,13 @@ export default defineConfig({
         },
         rollupOptions: {
             external: ['@dpuse/dpuse-shared', /^https:\/\/engine-eu\.dpuse\.app\//],
-            plugins: [Sonda({ filename: 'index', format: 'json', brotli: true, gzip: false, open: false, outputDir: './bundle-analysis-reports/sonda' })]
+            plugins: [Sonda({ filename: 'index', format: 'json', brotli: false, gzip: true, open: false, outputDir: './bundle-analysis-reports/sonda' })]
         },
         sourcemap: 'hidden',
         target: 'ESNext'
     },
-    plugins: [dts({ outDirs: 'dist/types', entryRoot: 'src' })],
+    // Types are written straight into 'dist/types', where package.json points, rather than under 'dist/types/src'.
+    plugins: [dts({ entryRoot: 'src', outDirs: 'dist/types' })],
     resolve: {
         alias: {
             '~': fileURLToPath(new URL('./', import.meta.url)),

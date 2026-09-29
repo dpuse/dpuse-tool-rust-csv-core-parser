@@ -1,9 +1,10 @@
-# '.gitignore' configuration for DPUse projects published to npm.
+# Default '.gitignore' configuration for DPUse projects.
 .dev.vars
 .env*
 .eslintcache
 .wrangler
 coverage
+dist
 dist-scripts
 node_modules
 *.tsbuildinfo
@@ -23,3 +24,8 @@ rust/target
 __screenshots__/
 test-results/
 playwright-report/
+
+# VitePress
+site/kb/
+site/.vitepress/cache
+site/.vitepress/dist

@@ -7,7 +7,7 @@
  */
 
 // Framework dependencies.
-import { ConnectorError } from '@dpuse/dpuse-shared/errors'; // TODO: This should be  Module or Tool error?
+import { ConnectorError } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
 
 // Tool dependencies - types.
 import type * as RustModule from '../rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js';
