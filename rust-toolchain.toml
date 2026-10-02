@@ -1,0 +1,5 @@
+# Pins the Rust version and the WebAssembly target, for local builds and CI alike. 'rustup' installs both on the first build.
+[toolchain]
+channel = "1.98.1"
+profile = "minimal"
+targets = ["wasm32-unknown-unknown"]

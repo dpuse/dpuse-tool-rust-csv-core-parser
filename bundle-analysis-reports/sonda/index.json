@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": "0.14.0",
-    "generatedAt": "2026-09-29T14:45:39.523Z",
+    "generatedAt": "2026-10-02T10:28:34.635Z",
     "integration": "vite",
     "sources": false,
     "gzip": true,
@@ -21,8 +21,8 @@
       "name": "[unassigned]",
       "type": "other",
       "format": "other",
-      "uncompressed": 260,
-      "gzip": 131,
+      "uncompressed": 1366,
+      "gzip": 205,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     },
@@ -34,55 +34,72 @@
       "uncompressed": 1292,
       "gzip": 206,
       "brotli": 0,
-      "parent": "dist/dpuse_tool_rust_csv_core_parser-BwgIkyVB.js"
+      "parent": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js"
     },
     {
       "kind": "asset",
-      "name": "dist/dpuse_tool_rust_csv_core_parser-BwgIkyVB.js",
+      "name": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js",
       "type": "script",
-      "uncompressed": 150112,
-      "gzip": 61498,
+      "uncompressed": 134943,
+      "gzip": 54530,
       "brotli": 0
     },
     {
       "kind": "asset",
       "name": "dist/dpuse-tool-rust-csv-core-parser.es.js",
       "type": "script",
-      "uncompressed": 1789,
-      "gzip": 798,
+      "uncompressed": 10997,
+      "gzip": 3380,
       "brotli": 0
     },
     {
       "kind": "filesystem",
+      "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
+      "type": "script",
+      "format": "esm",
+      "uncompressed": 33907
+    },
+    {
+      "kind": "chunk",
+      "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
+      "type": "script",
+      "format": "esm",
+      "uncompressed": 8106,
+      "gzip": 2510,
+      "brotli": 0,
+      "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
+    },
+    {
+      "kind": "filesystem",
       "name": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 160918
+      "uncompressed": 146665
     },
     {
       "kind": "chunk",
       "name": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 148820,
-      "gzip": 61292,
+      "uncompressed": 133651,
+      "gzip": 54324,
       "brotli": 0,
-      "parent": "dist/dpuse_tool_rust_csv_core_parser-BwgIkyVB.js"
+      "parent": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js"
     },
     {
       "kind": "filesystem",
       "name": "src/index.ts",
       "type": "script",
       "format": "esm",
-      "uncompressed": 3125
+      "uncompressed": 2907
     },
     {
       "kind": "chunk",
       "name": "src/index.ts",
       "type": "script",
       "format": "esm",
-      "uncompressed": 1529,
-      "gzip": 667,
+      "uncompressed": 1525,
+      "gzip": 666,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     }
@@ -102,12 +119,19 @@
     },
     {
       "kind": "entrypoint",
-      "source": "dist/dpuse_tool_rust_csv_core_parser-BwgIkyVB.js",
+      "source": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js",
       "target": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "original": null
     }
   ],
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "@dpuse/dpuse-shared",
+      "paths": [
+        "node_modules/@dpuse/dpuse-shared"
+      ]
+    }
+  ],
   "issues": [],
   "sourcemaps": []
 }

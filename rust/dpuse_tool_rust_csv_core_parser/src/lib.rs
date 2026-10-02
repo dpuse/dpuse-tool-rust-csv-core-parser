@@ -83,6 +83,10 @@ impl CsvSession {
     }
 
     fn finish_rows(&mut self) -> Result<Vec<Vec<String>>, JsValue> {
+        // TODO: A last row with no line ending is lost, so 'a,b\n1,2' counts no rows. Its bytes were already taken
+        // into 'pending_record' by an earlier push, leaving the buffer empty, so no newline is added here. Also add
+        // the newline when 'pending_record' holds a part row. The test 'counts a final row with no line ending' in
+        // tests/index.test.ts checks this; remove its '.fails' once fixed.
         // The `csv-core` reader expects newline-terminated input. Append a
         // newline when the data source does not end with one.
         if !self.buffer.is_empty() && !self.buffer.ends_with(b"\n") {

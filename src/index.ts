@@ -1,59 +1,45 @@
-/**
- * CSV Core Tool with Rust/WASM processing.
- *
- * Provides high-performance CSV parsing with two modes:
- * - Stream mode: For browsers supporting transferable ReadableStreams (Chromium)
- * - Chunk mode: For browsers without transferable stream support (Safari)
- */
-
-// Framework dependencies.
+// ── DPUse Framework
 import { ConnectorError } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
 
-// Tool dependencies - types.
+// ── Local Framework
 import type * as RustModule from '../rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js';
 
-/**
- * Tool configuration.
- */
-export const config = {
-    id: 'rust-csv-core',
-    name: 'Rust CSV Core',
-    version: '0.1.0'
-} as const;
+// ── Types ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-/**
- * Rust bindings type.
- */
 type RustBindings = typeof RustModule;
 
-/**
- * Module state.
- */
-const state: { rustBindingsPromise: Promise<RustBindings> | undefined } = {
-    rustBindingsPromise: undefined
-};
-
-/**
- * CSV processing options.
- */
 export interface CsvProcessingOptions {
     delimiter?: string;
     hasHeaders?: boolean;
 }
 
-/**
- * CSV processing result summary.
- */
 export interface CsvProcessingSummary {
     processedRowCount: number;
     failedRowCount: number;
     durationMs?: number;
 }
 
+// ── Constants ────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+export const config = {
+    id: 'rust-csv-core',
+    name: 'Rust CSV Core',
+    version: '0.1.0'
+} as const;
+
+// ── State ────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+const state: { rustBindingsPromise: Promise<RustBindings> | undefined } = {
+    rustBindingsPromise: undefined
+};
+
+// ── Tools ────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
 /**
- * Tool class implementing CSV parsing with Rust core.
+ * Parses CSV with a Rust core compiled to WebAssembly, in one of two modes: a transferable ReadableStream where the
+ * browser supports one (Chromium), or chunk by chunk where it does not (Safari).
  */
-class Tool {
+export class Tool {
     readonly config = config;
 
     /**
@@ -139,9 +125,9 @@ class Tool {
     }
 }
 
-/**
- * Load Rust bindings lazily.
- */
+// ── Helpers ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+// The WebAssembly loads once, on first use; the promise is kept so callers that arrive together share one load.
 async function loadRustBindings(): Promise<RustBindings> {
     state.rustBindingsPromise ??= (async () => {
         const module = await import('../rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js');
@@ -150,6 +136,3 @@ async function loadRustBindings(): Promise<RustBindings> {
     })();
     return state.rustBindingsPromise;
 }
-
-// Exposures.
-export { Tool };
