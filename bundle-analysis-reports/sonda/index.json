@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": "0.14.0",
-    "generatedAt": "2026-10-02T10:28:34.635Z",
+    "generatedAt": "2026-10-02T15:12:32.685Z",
     "integration": "vite",
     "sources": false,
     "gzip": true,
@@ -34,14 +34,14 @@
       "uncompressed": 1292,
       "gzip": 206,
       "brotli": 0,
-      "parent": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js"
+      "parent": "dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js"
     },
     {
       "kind": "asset",
-      "name": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js",
+      "name": "dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js",
       "type": "script",
-      "uncompressed": 134943,
-      "gzip": 54530,
+      "uncompressed": 135059,
+      "gzip": 54653,
       "brotli": 0
     },
     {
@@ -49,7 +49,7 @@
       "name": "dist/dpuse-tool-rust-csv-core-parser.es.js",
       "type": "script",
       "uncompressed": 10997,
-      "gzip": 3380,
+      "gzip": 3379,
       "brotli": 0
     },
     {
@@ -74,17 +74,17 @@
       "name": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 146665
+      "uncompressed": 146781
     },
     {
       "kind": "chunk",
       "name": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 133651,
-      "gzip": 54324,
+      "uncompressed": 133767,
+      "gzip": 54447,
       "brotli": 0,
-      "parent": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js"
+      "parent": "dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js"
     },
     {
       "kind": "filesystem",
@@ -99,7 +99,7 @@
       "type": "script",
       "format": "esm",
       "uncompressed": 1525,
-      "gzip": 666,
+      "gzip": 664,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     }
@@ -119,7 +119,7 @@
     },
     {
       "kind": "entrypoint",
-      "source": "dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js",
+      "source": "dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js",
       "target": "rust/dpuse_tool_rust_csv_core_parser/pkg/dpuse_tool_rust_csv_core_parser.js",
       "original": null
     }

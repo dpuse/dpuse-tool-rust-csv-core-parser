@@ -41,74 +41,6 @@ A high-performance CSV parsing tool with Rust/WebAssembly core for the Data Posi
 - **Single Load**: Dynamically loaded once and shared across all connectors
 - **Memory Efficient**: Streaming architecture processes large files without loading entire content into memory
 
-## Architecture
-
-The tool encapsulates:
-
-- **Rust Core** (`rust/dpuse_tool_rust_csv_core_parser`): Low-level CSV parsing with `csv-core`
-- **TypeScript Wrapper** (`src/index.ts`): Browser-friendly API with automatic mode selection
-- **WASM Binary**: Compiled once, bundled with the tool
-
-## Usage
-
-The tool is designed to be loaded dynamically by connectors:
-
-```typescript
-import { loadTool } from '@dpuse/dpuse-shared/component/tool';
-import type { Tool as RustCsvCoreTool } from '@dpuse/dpuse-tool-rust-csv-core-parser';
-
-// Load the tool (loaded once, shared across all uses)
-const csvTool = await loadTool<RustCsvCoreTool>(toolConfigs, 'rust-csv-core');
-
-// Process with transferable streams (Chromium)
-const result = await csvTool.processWithTransferableStream(readableStream, { delimiter: ',', hasHeaders: true }, (rowCount) => console.log(`Processed ${rowCount} rows`));
-
-// Process with chunks (Safari fallback)
-const result = await csvTool.processWithChunks(readableStream, { delimiter: ',', hasHeaders: true }, (rowCount) => console.log(`Processed ${rowCount} rows`));
-```
-
-## Building
-
-```bash
-# Install dependencies
-npm install
-
-# Build Rust WASM module
-npm run build:wasm
-
-# Build TypeScript + bundle WASM
-npm run build
-```
-
-## Development
-
-**Prerequisites:**
-
-- Node.js 18+
-- Rust toolchain
-- `wasm-pack` CLI: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
-
-**Structure:**
-
-```
-dpuse-tool-rust-csv-core-parser/
-├── src/
-│   └── index.ts              # TypeScript API wrapper
-├── rust/
-│   └── dpuse_tool_rust_csv_core_parser/
-│       ├── src/
-│       │   └── lib.rs         # Rust CSV core
-│       ├── pkg/               # Generated WASM (gitignored)
-│       └── Cargo.toml
-├── dist/                      # Built package (gitignored)
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
-```
-
-## License
-
-[MIT](./LICENSE) © 2026 Data Positioning Pty Ltd
 <!-- USAGE_START -->
 
 ## Usage
@@ -133,6 +65,65 @@ This repository is managed using the common set of actions provided by [@dpuse/d
 
 <!-- USAGE_END -->
 
+```bash
+# Install dependencies
+npm install
+
+# Build Rust WASM module
+npm run build:wasm
+
+# Build TypeScript + bundle WASM
+npm run build
+```
+
+Prerequisites:
+
+- Node.js 24+
+- Rust toolchain
+- `wasm-pack` CLI: `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
+
+The tool encapsulates:
+
+- **Rust Core** (`rust/dpuse_tool_rust_csv_core_parser`): Low-level CSV parsing with `csv-core`
+- **TypeScript Wrapper** (`src/index.ts`): Browser-friendly API with automatic mode selection
+- **WASM Binary**: Compiled once, bundled with the tool
+
+### Example
+
+The tool is designed to be loaded dynamically by connectors:
+
+```typescript
+import { loadTool } from '@dpuse/dpuse-shared/component/tool';
+import type { Tool as RustCsvCoreTool } from '@dpuse/dpuse-tool-rust-csv-core-parser';
+
+// Load the tool (loaded once, shared across all uses)
+const csvTool = await loadTool<RustCsvCoreTool>(toolConfigs, 'rust-csv-core');
+
+// Process with transferable streams (Chromium)
+const result = await csvTool.processWithTransferableStream(readableStream, { delimiter: ',', hasHeaders: true }, (rowCount) => console.log(`Processed ${rowCount} rows`));
+
+// Process with chunks (Safari fallback)
+const result = await csvTool.processWithChunks(readableStream, { delimiter: ',', hasHeaders: true }, (rowCount) => console.log(`Processed ${rowCount} rows`));
+```
+
+Structure:
+
+```bash
+dpuse-tool-rust-csv-core-parser/
+├── src/
+│   └── index.ts              # TypeScript API wrapper
+├── rust/
+│   └── dpuse_tool_rust_csv_core_parser/
+│       ├── src/
+│       │   └── lib.rs         # Rust CSV core
+│       ├── pkg/               # Generated WASM (gitignored)
+│       └── Cargo.toml
+├── dist/                      # Built package (gitignored)
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
 <!-- DEPENDENCY_LICENSES_START -->
 
 ## Dependency Licenses
@@ -141,7 +132,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 | Dependency                                                                                      | Version | License(s)                          | Document                                                                                                                                                                                                               |
 | :---------------------------------------------------------------------------------------------- | :-----: | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 0.3.868 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@0.3.868-LICENSE.txt)                                                                                                                                                  |
+| [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 0.3.869 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@0.3.869-LICENSE.txt)                                                                                                                                                  |
 | [cfg-if](https://github.com/rust-lang/cfg-if)                                                   |  1.0.4  | MIT OR Apache-2.0                   | [LICENSE-APACHE](licenses/downloads/cfg-if@1.0.4-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/cfg-if@1.0.4-LICENSE-MIT)                                                                                            |
 | [console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)                |  0.1.7  | Apache-2.0/MIT                      | [LICENSE-APACHE](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-MIT)                                                        |
 | [csv-core](https://github.com/BurntSushi/rust-csv)                                              | 0.1.13  | Unlicense/MIT                       | [COPYING](licenses/downloads/csv-core@0.1.13-COPYING) [LICENSE-MIT](licenses/downloads/csv-core@0.1.13-LICENSE-MIT) [UNLICENSE](licenses/downloads/csv-core@0.1.13-UNLICENSE)                                          |
@@ -173,7 +164,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 The dependency tree below shows how each package in the table above is reached — direct and transitive — along with its installed version, release date, and update status. A package that does not ship itself, such as one whose parts are bundled separately, is left out and what ships beneath it is shown in its place. Packages flagged ❗ have a newer version available; ⚠️ indicates a package that hasn't been updated in the last 6 months or longer. Neither flag necessarily indicates a problem: we let new releases stabilise before upgrading, and some packages are mature and stable (have limited or no dependencies), so they require no active development.
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 0.3.868 — this month: 2026-10-02
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 0.3.869 — this month: 2026-10-02
     - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — this month: 2026-09-09
 - **dpuse-tool-rust-csv-core-parser** 0.1.0 — this project's Rust code, compiled into its WebAssembly
     - **[console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)** 0.1.7 — **59 months** ago: 2021-10-11 ⚠️
@@ -243,8 +234,8 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 
 | Chunk/Module/File                                                     | Composition                                  |
 | :-------------------------------------------------------------------- | :------------------------------------------- |
-| **dist/dpuse_tool_rust_csv_core_parser-C7DNhacW.js**                  | 131.8 kB · gzip 53.3 kB · 92.5% of the build |
-| &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `████████████████████` 99.0% · 130.5 kB      |
+| **dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js**                  | 131.9 kB · gzip 53.4 kB · 92.5% of the build |
+| &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `████████████████████` 99.0% · 130.6 kB      |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░` 1.0% · 1.3 kB         |
 | **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 10.7 kB · gzip 3.3 kB · 7.5% of the build    |
 | &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `███████████████░░░░░` 73.7% · 7.9 kB        |
