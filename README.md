@@ -7,13 +7,13 @@
 [![npm version](https://img.shields.io/npm/v/@dpuse/dpuse-tool-rust-csv-core-parser?color=cb3837&label=npm)](https://www.npmjs.com/package/@dpuse/dpuse-tool-rust-csv-core-parser)
 [![CI](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/actions/workflows/ci.yml/badge.svg)](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/actions/workflows/ci.yml)
 
-[DPUse](https://www.dpuse.app) · [Report a Vulnerability](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/security/advisories/new) · [Open an Issue](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/issues)
-
 CSV parser tool with Rust/WASM core for high-performance streaming
+
+[Report a Vulnerability](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/security/advisories/new) · [Open an Issue](https://github.com/dpuse/dpuse-tool-rust-csv-core-parser/issues)
 
 ## About DPUse
 
-DPUse (Data Positioning & Use) is an in-browser application that positions your data for use through three core activities: sourcing, contextualising, and publishing.
+[DPUse](https://www.dpuse.app) (Data Positioning & Use) is an in-browser application that positions your data for use through three core activities: sourcing, contextualising, and publishing.
 
 **Sourcing** uses a library of [Connectors](https://www.dpuse.app/connectors) to establish [Connections](https://www.dpuse.app) to applications, databases, file stores, and curated datasets; these connections are subsequently used to configure structured [Data Views](https://www.dpuse.app) from the underlying sources.
 
@@ -132,7 +132,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 | Dependency                                                                                      | Version | License(s)                          | Document                                                                                                                                                                                                               |
 | :---------------------------------------------------------------------------------------------- | :-----: | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 0.3.869 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@0.3.869-LICENSE.txt)                                                                                                                                                  |
+| [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    |  1.0.2  | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.2-LICENSE.txt)                                                                                                                                                    |
 | [cfg-if](https://github.com/rust-lang/cfg-if)                                                   |  1.0.4  | MIT OR Apache-2.0                   | [LICENSE-APACHE](licenses/downloads/cfg-if@1.0.4-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/cfg-if@1.0.4-LICENSE-MIT)                                                                                            |
 | [console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)                |  0.1.7  | Apache-2.0/MIT                      | [LICENSE-APACHE](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-MIT)                                                        |
 | [csv-core](https://github.com/BurntSushi/rust-csv)                                              | 0.1.13  | Unlicense/MIT                       | [COPYING](licenses/downloads/csv-core@0.1.13-COPYING) [LICENSE-MIT](licenses/downloads/csv-core@0.1.13-LICENSE-MIT) [UNLICENSE](licenses/downloads/csv-core@0.1.13-UNLICENSE)                                          |
@@ -164,7 +164,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 The dependency tree below shows how each package in the table above is reached — direct and transitive — along with its installed version, release date, and update status. A package that does not ship itself, such as one whose parts are bundled separately, is left out and what ships beneath it is shown in its place. Packages flagged ❗ have a newer version available; ⚠️ indicates a package that hasn't been updated in the last 6 months or longer. Neither flag necessarily indicates a problem: we let new releases stabilise before upgrading, and some packages are mature and stable (have limited or no dependencies), so they require no active development.
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 0.3.869 — this month: 2026-10-02
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.2 — this month: 2026-10-03
     - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — this month: 2026-09-09
 - **dpuse-tool-rust-csv-core-parser** 0.1.0 — this project's Rust code, compiled into its WebAssembly
     - **[console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)** 0.1.7 — **59 months** ago: 2021-10-11 ⚠️

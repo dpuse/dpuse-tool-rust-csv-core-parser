@@ -90,13 +90,13 @@ export class Tool {
             const reader = stream.getReader();
 
             try {
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- The loop ends when the reader reports 'done'.
                 while (true) {
                     const { value, done } = await reader.read();
                     if (done) break;
 
                     // if (value) {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- The WebAssembly bindings return untyped rows.
                     const rows = session.pushChunk(value);
                     const count = Array.isArray(rows) ? rows.length : 0;
                     processedRowCount += count;
@@ -105,7 +105,7 @@ export class Tool {
                 }
 
                 // Finish processing
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- The WebAssembly bindings return untyped rows.
                 const remainingRows = session.finish();
                 const remainingCount = Array.isArray(remainingRows) ? remainingRows.length : 0;
                 processedRowCount += remainingCount;
