@@ -234,8 +234,8 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 
 | Chunk/Module/File                                                     | Composition                                  |
 | :-------------------------------------------------------------------- | :------------------------------------------- |
-| **dist/dpuse_tool_rust_csv_core_parser-BPvWfofb.js**                  | 131.9 kB · gzip 53.4 kB · 92.5% of the build |
-| &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `████████████████████` 99.0% · 130.6 kB      |
+| **dist/dpuse_tool_rust_csv_core_parser-IBWkPQdP.js**                  | 131.7 kB · gzip 53.4 kB · 92.5% of the build |
+| &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `████████████████████` 99.0% · 130.4 kB      |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░` 1.0% · 1.3 kB         |
 | **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 10.7 kB · gzip 3.3 kB · 7.5% of the build    |
 | &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `███████████████░░░░░` 73.7% · 7.9 kB        |

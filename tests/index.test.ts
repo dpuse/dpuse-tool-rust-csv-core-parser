@@ -53,10 +53,14 @@ describe('Tool', () => {
             expect(summary.processedRowCount).toBe(2);
         });
 
-        // TODO: The Rust parser loses a last row with no line ending (see the TODO in 'finish_rows' in lib.rs). Remove
-        // '.fails' once that is fixed, so this test checks the row is counted.
-        it.fails('counts a final row with no line ending', async () => {
+        it('counts a final row with no line ending', async () => {
             const summary = await new Tool()[methodName](createStream('a,b\n1,2'));
+
+            expect(summary.processedRowCount).toBe(1);
+        });
+
+        it('counts a final quoted row with no line ending', async () => {
+            const summary = await new Tool()[methodName](createStream('a,b\n"1","x, y"'));
 
             expect(summary.processedRowCount).toBe(1);
         });

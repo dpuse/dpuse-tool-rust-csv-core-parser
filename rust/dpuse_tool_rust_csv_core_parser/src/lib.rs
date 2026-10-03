@@ -83,16 +83,7 @@ impl CsvSession {
     }
 
     fn finish_rows(&mut self) -> Result<Vec<Vec<String>>, JsValue> {
-        // TODO: A last row with no line ending is lost, so 'a,b\n1,2' counts no rows. Its bytes were already taken
-        // into 'pending_record' by an earlier push, leaving the buffer empty, so no newline is added here. Also add
-        // the newline when 'pending_record' holds a part row. The test 'counts a final row with no line ending' in
-        // tests/index.test.ts checks this; remove its '.fails' once fixed.
-        // The `csv-core` reader expects newline-terminated input. Append a
-        // newline when the data source does not end with one.
-        if !self.buffer.is_empty() && !self.buffer.ends_with(b"\n") {
-            self.buffer.push(b'\n');
-        }
-
+        // Parse what is left, then tell the reader the input has ended so it returns a last row with no line ending.
         self.drain_records(true)
     }
 
@@ -104,8 +95,12 @@ impl CsvSession {
         let mut current_record = core::mem::take(&mut self.pending_record);
         let mut current_field_ends = core::mem::take(&mut self.pending_field_ends);
 
-        while offset < self.buffer.len() {
+        loop {
+            // An empty input tells `csv-core` the data has ended, so it is only passed on the final flush.
             let input = &self.buffer[offset..];
+            if input.is_empty() && !final_flush {
+                break;
+            }
             let (result, in_read, out_written, ends_written) =
                 self.reader
                     .read_record(input, &mut self.record_buffer, &mut self.field_ends);
@@ -142,7 +137,12 @@ impl CsvSession {
                     current_record.clear();
                     current_field_ends.clear();
                 }
-                ReadRecordResult::InputEmpty => break,
+                ReadRecordResult::InputEmpty => {
+                    // On the final flush, go round again with empty input to complete any part-read last row.
+                    if !final_flush {
+                        break;
+                    }
+                }
                 ReadRecordResult::OutputFull => {
                     // `csv-core` needs larger buffers; grow them exponentially
                     // to reduce reallocations on wide rows.
