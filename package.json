@@ -1,6 +1,6 @@
 {
     "name": "@dpuse/dpuse-tool-rust-csv-core-parser",
-    "version": "1.0.5",
+    "version": "1.0.106",
     "private": false,
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
@@ -19,8 +19,8 @@
     "types": "./dist/types/src/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/dpuse-tool-rust-csv-core-parser.es.js",
-            "types": "./dist/types/src/index.d.ts"
+            "types": "./dist/types/src/index.d.ts",
+            "import": "./dist/dpuse-tool-rust-csv-core-parser.es.js"
         }
     },
     "files": [
@@ -62,11 +62,11 @@
         "test": "node -e \"import('@dpuse/dpuse-development').then(m => m.testProject())\""
     },
     "dependencies": {
-        "@dpuse/dpuse-shared": "^1.0.2"
+        "@dpuse/dpuse-shared": "^1.0.113"
     },
     "devDependencies": {
-        "@dpuse/dpuse-development": "^1.0.3",
-        "@dpuse/eslint-config-dpuse": "^1.0.131",
+        "@dpuse/dpuse-development": "^1.0.112",
+        "@dpuse/eslint-config-dpuse": "^1.0.132",
         "@types/node": "^26.6.4",
         "eslint": "^10.12.0",
         "prettier": "^3.9.9",
