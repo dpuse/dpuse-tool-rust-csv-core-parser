@@ -166,7 +166,7 @@ The dependency tree below shows how each package in the table above is reached �
 
 #### JavaScript
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.113 — this month: 2026-10-05
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.113 — this month: 2026-10-05 → latest: 1.0.116 — this month: 2026-10-06 ❗
     - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — this month: 2026-09-09
 
 #### Rust
@@ -180,7 +180,7 @@ The dependency tree below shows how each package in the table above is reached �
             - **[wasm-bindgen-shared](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/shared)** 0.2.114 — 7 mths ago: 2026-02-27 ⚠️ → latest: 0.2.129 — this month: 2026-09-25 ❗
                 - **[unicode-ident](https://github.com/dtolnay/unicode-ident)** 1.0.24 — 7 mths ago: 2026-02-16 ⚠️ → latest: 1.0.26 — this month: 2026-09-17 ❗
     - **[csv-core](https://github.com/BurntSushi/rust-csv)** 0.1.13 — 11 mths ago: 2025-10-17 ⚠️
-        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 7 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 2 mths ago: 2026-07-08 ❗
+        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 8 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 2 mths ago: 2026-07-08 ❗
     - **[futures](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
         - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
             - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
@@ -195,7 +195,7 @@ The dependency tree below shows how each package in the table above is reached �
                 - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
                 - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
                 - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
-                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 7 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 2 mths ago: 2026-07-08 ❗
+                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 8 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 2 mths ago: 2026-07-08 ❗
                 - **[pin-project-lite](https://github.com/taiki-e/pin-project-lite)** 0.2.17 — 7 mths ago: 2026-02-27 ⚠️
                 - **[slab](https://github.com/tokio-rs/slab)** 0.4.12 — 8 mths ago: 2026-01-31 ⚠️
         - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 7 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 1 mth ago: 2026-08-11 ❗
