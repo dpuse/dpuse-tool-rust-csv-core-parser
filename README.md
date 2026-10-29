@@ -243,10 +243,10 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 | &nbsp;&nbsp;&nbsp;&nbsp;(Rust WebAssembly as base64, 98.9 kB binary)  | `██████████████████░░`&nbsp;88.3%&nbsp;·&nbsp;131.9&nbsp;kB                                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.7%&nbsp;·&nbsp;16.0&nbsp;kB                                     |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░`&nbsp;1.0%&nbsp;·&nbsp;1.4&nbsp;kB                                       |
-| **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 21.9&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.0&nbsp;kB&nbsp;·&nbsp;12.8%&nbsp;of&nbsp;the&nbsp;build   |
-| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `███████████████░░░░░`&nbsp;73.4%&nbsp;·&nbsp;16.1&nbsp;kB                                     |
-| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `███░░░░░░░░░░░░░░░░░`&nbsp;16.2%&nbsp;·&nbsp;3.5&nbsp;kB                                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.4%&nbsp;·&nbsp;2.3&nbsp;kB                                      |
+| **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 22.0&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.1&nbsp;kB&nbsp;·&nbsp;12.8%&nbsp;of&nbsp;the&nbsp;build   |
+| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `███████████████░░░░░`&nbsp;73.0%&nbsp;·&nbsp;16.1&nbsp;kB                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `███░░░░░░░░░░░░░░░░░`&nbsp;16.5%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.5%&nbsp;·&nbsp;2.3&nbsp;kB                                      |
 
 Bars show each row's share of its output file.
 

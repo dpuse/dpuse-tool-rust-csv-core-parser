@@ -149,6 +149,14 @@ describe('Tool', () => {
             expect(listValues(utf8Chunks)).toEqual([['😀', 'é']]);
         });
 
+        it('reads a piece larger than a slice, with a character split between slices', async () => {
+            const value = 'é'.repeat(300_000); // 600,000 bytes, so a slice of 1,048,576 bytes ends inside the second record's 'é'.
+
+            const { chunks } = await parseStream(createStream(`${value}\n${value}\n${value}\n`));
+
+            expect(listValues(chunks)).toEqual([[value], [value], [value]]);
+        });
+
         it('hands records over in chunks of the size asked for, waiting for each to be received', async () => {
             const events: string[] = [];
 

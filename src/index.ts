@@ -45,6 +45,11 @@ export const config = {
 
 const DEFAULT_CHUNK_SIZE = 10_000;
 
+// WebKit hands over a file stream in pieces of about 18 MB, against about 2 MB in Chromium. Each piece is copied into
+// WebAssembly memory, which never shrinks, so pieces that large grew it to 567 MB. Each piece is read in slices of this
+// size instead. A slice is a view, not a copy.
+const MAX_SLICE_BYTE_COUNT = 1_048_576;
+
 // ── State ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 const state: { rustBindingsPromise: Promise<RustBindings> | undefined } = {
@@ -97,7 +102,10 @@ export class Tool implements ParserInterface {
             let result = await reader.read();
             while (!result.done) {
                 options.abortSignal.throwIfAborted();
-                await emitRecords(recordReader.pushChunk(transcoder == null ? result.value : transcoder.transcode(result.value)));
+                const bytes = transcoder == null ? result.value : transcoder.transcode(result.value);
+                for (let sliceStart = 0; sliceStart < bytes.length; sliceStart += MAX_SLICE_BYTE_COUNT) {
+                    await emitRecords(recordReader.pushChunk(bytes.subarray(sliceStart, sliceStart + MAX_SLICE_BYTE_COUNT)));
+                }
                 result = await reader.read();
             }
             options.abortSignal.throwIfAborted();
