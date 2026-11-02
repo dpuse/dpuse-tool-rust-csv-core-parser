@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": "0.14.0",
-    "generatedAt": "2026-10-29T15:25:58.401Z",
+    "generatedAt": "2026-11-02T15:34:06.082Z",
     "integration": "vite",
     "sources": false,
     "gzip": true,
@@ -48,8 +48,8 @@
       "kind": "asset",
       "name": "dist/dpuse-tool-rust-csv-core-parser.es.js",
       "type": "script",
-      "uncompressed": 22511,
-      "gzip": 6235,
+      "uncompressed": 22548,
+      "gzip": 6246,
       "brotli": 0
     },
     {
@@ -57,15 +57,15 @@
       "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 60778
+      "uncompressed": 64708
     },
     {
       "kind": "chunk",
       "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 16439,
-      "gzip": 4493,
+      "uncompressed": 16476,
+      "gzip": 4512,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     },
@@ -99,7 +99,7 @@
       "type": "script",
       "format": "esm",
       "uncompressed": 3718,
-      "gzip": 1526,
+      "gzip": 1520,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     }
