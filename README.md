@@ -132,7 +132,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 | Type       | Dependency                                                                                      | Version | License(s)                          | Document                                                                                                                                                                                                               |
 | :--------- | :---------------------------------------------------------------------------------------------- | :-----: | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.174 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.174-LICENSE.txt)                                                                                                                                                  |
+| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.188 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.188-LICENSE.txt)                                                                                                                                                  |
 | JavaScript | [valibot](https://github.com/open-circle/valibot)                                               |  1.5.0  | MIT                                 | [LICENSE](licenses/downloads/valibot@1.5.0-LICENSE.txt)                                                                                                                                                                |
 | Rust       | [cfg-if](https://github.com/rust-lang/cfg-if)                                                   |  1.0.4  | MIT OR Apache-2.0                   | [LICENSE-APACHE](licenses/downloads/cfg-if@1.0.4-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/cfg-if@1.0.4-LICENSE-MIT)                                                                                            |
 | Rust       | [console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)                |  0.1.7  | Apache-2.0/MIT                      | [LICENSE-APACHE](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-MIT)                                                        |
@@ -166,7 +166,7 @@ The dependency tree below shows how each package in the table above is reached �
 
 #### JavaScript
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.174 — this month: 2026-11-02
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.188 — this month: 2026-11-07
     - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — 1 mth ago: 2026-09-09
 
 #### Rust
@@ -180,7 +180,7 @@ The dependency tree below shows how each package in the table above is reached �
             - **[wasm-bindgen-shared](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/shared)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
                 - **[unicode-ident](https://github.com/dtolnay/unicode-ident)** 1.0.24 — 8 mths ago: 2026-02-16 ⚠️ → latest: 1.0.27 — this month: 2026-10-12 ❗
     - **[csv-core](https://github.com/BurntSushi/rust-csv)** 0.1.13 — 12 mths ago: 2025-10-17 ⚠️
-        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 8 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
+        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
     - **[futures](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
         - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
             - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
@@ -195,7 +195,7 @@ The dependency tree below shows how each package in the table above is reached �
                 - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
                 - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
                 - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 8 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
+                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
                 - **[pin-project-lite](https://github.com/taiki-e/pin-project-lite)** 0.2.17 — 8 mths ago: 2026-02-27 ⚠️
                 - **[slab](https://github.com/tokio-rs/slab)** 0.4.12 — 9 mths ago: 2026-01-31 ⚠️
         - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
@@ -239,14 +239,14 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 
 | Chunk/Module/File                                                     | Composition                                                                                    |
 | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- |
-| **dist/dpuse_tool_rust_csv_core_parser-CRLnCeeU.js**                  | 149.3&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;59.5&nbsp;kB&nbsp;·&nbsp;87.1%&nbsp;of&nbsp;the&nbsp;build |
+| **dist/dpuse_tool_rust_csv_core_parser-CRLnCeeU.js**                  | 149.3&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;59.5&nbsp;kB&nbsp;·&nbsp;83.3%&nbsp;of&nbsp;the&nbsp;build |
 | &nbsp;&nbsp;&nbsp;&nbsp;(Rust WebAssembly as base64, 98.9 kB binary)  | `██████████████████░░`&nbsp;88.3%&nbsp;·&nbsp;131.9&nbsp;kB                                    |
 | &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.7%&nbsp;·&nbsp;16.0&nbsp;kB                                     |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░`&nbsp;1.0%&nbsp;·&nbsp;1.4&nbsp;kB                                       |
-| **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 22.0&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.1&nbsp;kB&nbsp;·&nbsp;12.9%&nbsp;of&nbsp;the&nbsp;build   |
-| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `███████████████░░░░░`&nbsp;73.1%&nbsp;·&nbsp;16.1&nbsp;kB                                     |
-| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `███░░░░░░░░░░░░░░░░░`&nbsp;16.5%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.4%&nbsp;·&nbsp;2.3&nbsp;kB                                      |
+| **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 30.0&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.7&nbsp;kB&nbsp;·&nbsp;16.7%&nbsp;of&nbsp;the&nbsp;build   |
+| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `████████████████░░░░`&nbsp;78.0%&nbsp;·&nbsp;23.4&nbsp;kB                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `██░░░░░░░░░░░░░░░░░░`&nbsp;11.9%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.0%&nbsp;·&nbsp;3.0&nbsp;kB                                      |
 
 Bars show each row's share of its output file.
 

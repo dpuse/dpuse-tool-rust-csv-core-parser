@@ -1,14 +1,14 @@
 // ── DPUse Framework
-import { ConnectorError, ignoreErrors, parseDelimitedText, resolveDecoderId } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
+import { ConnectorError, getValueDelimiterCharacter, ignoreErrors, parseDelimitedText, resolveDecoderId } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
 import type {
+    ParsedRecord,
     ParserInterface,
     ParseStreamOptions,
     ParseTextOptions,
     ParseTextResult,
-    ParsingRecord,
-    PreviewIssue,
     RecordRetrievalTypeId,
     RetrieveRecordsSummary,
+    SampleIssue,
     ValueDelimiterId
 } from '@dpuse/dpuse-shared';
 
@@ -72,7 +72,7 @@ export class Tool implements ParserInterface {
     async parseStream(
         stream: ReadableStream<Uint8Array>,
         options: ParseStreamOptions,
-        chunk: (typeId: RecordRetrievalTypeId, records: ParsingRecord[]) => void | Promise<void>
+        chunk: (typeId: RecordRetrievalTypeId, records: ParsedRecord[]) => void | Promise<void>
     ): Promise<RetrieveRecordsSummary> {
         const { RecordReader } = await loadRustBindings();
         options.abortSignal.throwIfAborted();
@@ -86,7 +86,7 @@ export class Tool implements ParserInterface {
         };
         options.abortSignal.addEventListener('abort', cancelRead, { once: true });
 
-        let records: ParsingRecord[] = [];
+        let records: ParsedRecord[] = [];
         // A promise returned by 'chunk' is awaited before reading on, so a slow receiver holds the read back.
         const emitRecords = async (batch: RustModule.RecordBatch): Promise<void> => {
             for (const record of unpackRecordBatch(batch)) {
@@ -133,7 +133,7 @@ export class Tool implements ParserInterface {
      */
     async parseText(text: string, options: ParseTextOptions): Promise<ParseTextResult> {
         const { RecordReader } = await loadRustBindings();
-        return await parseDelimitedText(text, options, (delimitedText, delimiter): Promise<{ issues: PreviewIssue[]; records: ParsingRecord[] }> => {
+        return await parseDelimitedText(text, options, (delimitedText, delimiter): Promise<{ issues: SampleIssue[]; records: ParsedRecord[] }> => {
             const recordReader = new RecordReader(convertDelimiterToByte(delimiter));
             try {
                 const records = unpackRecordBatch(recordReader.pushChunk(new TextEncoder().encode(delimitedText)));
@@ -230,11 +230,8 @@ export class Tool implements ParserInterface {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-// The two least common delimiters are named by their character codes, because neither can be typed.
 function convertDelimiterToByte(delimiter: ValueDelimiterId): number {
-    if (delimiter === '0x1E') return 0x1e;
-    if (delimiter === '0x1F') return 0x1f;
-    const byte = delimiter.codePointAt(0);
+    const byte = getValueDelimiterCharacter(delimiter).codePointAt(0);
     if (byte == null || byte > 0x7f) throw new Error(`Delimiter '${delimiter}' is not a single ASCII character.`);
     return byte;
 }
@@ -252,14 +249,14 @@ function constructUtf8Transcoder(encodingId: string): Utf8Transcoder | undefined
 }
 
 // Builds a record of '{ value, valueWasQuoted }' objects for each record in the batch, which is freed once read.
-function unpackRecordBatch(batch: RustModule.RecordBatch): ParsingRecord[] {
+function unpackRecordBatch(batch: RustModule.RecordBatch): ParsedRecord[] {
     const { recordValueCounts, text, valueEnds, valueQuoted } = batch;
     batch.free();
-    const records: ParsingRecord[] = [];
+    const records: ParsedRecord[] = [];
     let valueIndex = 0;
     let valueStart = 0;
     for (const valueCount of recordValueCounts) {
-        const record: ParsingRecord = [];
+        const record: ParsedRecord = [];
         for (let index = 0; index < valueCount; index++) {
             const valueEnd = valueEnds[valueIndex] ?? valueStart;
             record.push({ value: text.slice(valueStart, valueEnd), valueWasQuoted: valueQuoted[valueIndex] === 1 });

@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 
 // ── DPUse Framework
-import type { ParseStreamOptions, ParsingRecord, RetrieveRecordsSummary } from '@dpuse/dpuse-shared';
+import type { ParseStreamOptions, ParsedRecord, RetrieveRecordsSummary } from '@dpuse/dpuse-shared';
 
 // ── Local Framework
 import { Tool } from '@/index';
@@ -24,8 +24,8 @@ function createStream(...chunks: string[]): ReadableStream<Uint8Array> {
     });
 }
 
-function listValues(chunks: ParsingRecord[][]): (string | null)[][] {
-    return chunks.flat().map((record) => record.map((parsingValue) => parsingValue.value));
+function listValues(chunks: ParsedRecord[][]): (string | null)[][] {
+    return chunks.flat().map((record) => record.map((parsedValue) => parsedValue.value));
 }
 
 describe('Tool', () => {
@@ -76,8 +76,8 @@ describe('Tool', () => {
     describe('parseStream', () => {
         const parseStreamOptions = { abortSignal: new AbortController().signal, chunkSize: undefined, dataFormatId: 'dtv', encodingId: 'utf-8', valueDelimiterId: ',' } as const;
 
-        async function parseStream(stream: ReadableStream<Uint8Array>, options: Partial<ParseStreamOptions> = {}): Promise<{ chunks: ParsingRecord[][]; summary: RetrieveRecordsSummary }> {
-            const chunks: ParsingRecord[][] = [];
+        async function parseStream(stream: ReadableStream<Uint8Array>, options: Partial<ParseStreamOptions> = {}): Promise<{ chunks: ParsedRecord[][]; summary: RetrieveRecordsSummary }> {
+            const chunks: ParsedRecord[][] = [];
             const summary = await new Tool().parseStream(stream, { ...parseStreamOptions, ...options }, (_typeId, records) => {
                 chunks.push(records);
             });
