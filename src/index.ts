@@ -2,12 +2,12 @@
 import { ConnectorError, getValueDelimiterCharacter, ignoreErrors, parseDelimitedText, resolveDecoderId } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
 import type {
     ParsedRecord,
+    ParsedRecordsChunk,
     ParserInterface,
     ParseStreamOptions,
+    ParseStreamSummary,
     ParseTextOptions,
     ParseTextResult,
-    RecordRetrievalTypeId,
-    RetrieveRecordsSummary,
     SampleIssue,
     ValueDelimiterId
 } from '@dpuse/dpuse-shared';
@@ -69,11 +69,7 @@ export class Tool implements ParserInterface {
      * Parse stream. Reads delimited text from the stream. The caller owns the stream and its fetch, so a failed fetch is
      * the caller's to report. Aborting the signal stops the read and rejects with the signal's reason.
      */
-    async parseStream(
-        stream: ReadableStream<Uint8Array>,
-        options: ParseStreamOptions,
-        chunk: (typeId: RecordRetrievalTypeId, records: ParsedRecord[]) => void | Promise<void>
-    ): Promise<RetrieveRecordsSummary> {
+    async *parseStream(stream: ReadableStream<Uint8Array>, options: ParseStreamOptions): AsyncGenerator<ParsedRecordsChunk, ParseStreamSummary, undefined> {
         const { RecordReader } = await loadRustBindings();
         options.abortSignal.throwIfAborted();
         const recordReader = new RecordReader(convertDelimiterToByte(options.valueDelimiterId));
@@ -87,16 +83,17 @@ export class Tool implements ParserInterface {
         options.abortSignal.addEventListener('abort', cancelRead, { once: true });
 
         let records: ParsedRecord[] = [];
-        // A promise returned by 'chunk' is awaited before reading on, so a slow receiver holds the read back.
-        const emitRecords = async (batch: RustModule.RecordBatch): Promise<void> => {
+        // Hands over each chunk as it fills. Nothing more is read until the receiver asks for the next one, so a slow
+        // receiver holds the read back.
+        function* takeFullChunks(batch: RustModule.RecordBatch): Generator<ParsedRecordsChunk> {
             for (const record of unpackRecordBatch(batch)) {
                 records.push(record);
                 if (records.length < recordsPerChunk) continue;
                 const fullRecords = records;
                 records = [];
-                await chunk('parsingRecordArray', fullRecords);
+                yield { records: fullRecords, typeId: 'parsingRecordArray' };
             }
-        };
+        }
 
         try {
             let result = await reader.read();
@@ -104,14 +101,14 @@ export class Tool implements ParserInterface {
                 options.abortSignal.throwIfAborted();
                 const bytes = transcoder == null ? result.value : transcoder.transcode(result.value);
                 for (let sliceStart = 0; sliceStart < bytes.length; sliceStart += MAX_SLICE_BYTE_COUNT) {
-                    await emitRecords(recordReader.pushChunk(bytes.subarray(sliceStart, sliceStart + MAX_SLICE_BYTE_COUNT)));
+                    yield* takeFullChunks(recordReader.pushChunk(bytes.subarray(sliceStart, sliceStart + MAX_SLICE_BYTE_COUNT)));
                 }
                 result = await reader.read();
             }
             options.abortSignal.throwIfAborted();
-            if (transcoder != null) await emitRecords(recordReader.pushChunk(transcoder.finish()));
-            await emitRecords(recordReader.finish());
-            if (records.length > 0) await chunk('parsingRecordArray', records);
+            if (transcoder != null) yield* takeFullChunks(recordReader.pushChunk(transcoder.finish()));
+            yield* takeFullChunks(recordReader.finish());
+            if (records.length > 0) yield { records, typeId: 'parsingRecordArray' };
             return {
                 byteCount: recordReader.byteCount,
                 commentLineCount: 0, // Comments are not read, as csv-parse is set up in 'dpuse-tool-adaltas-csv-parser'.

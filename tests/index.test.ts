@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 
 // ── DPUse Framework
-import type { ParseStreamOptions, ParsedRecord, RetrieveRecordsSummary } from '@dpuse/dpuse-shared';
+import type { ParseStreamOptions, ParsedRecord, ParseStreamSummary } from '@dpuse/dpuse-shared';
 
 // ── Local Framework
 import { Tool } from '@/index';
@@ -76,12 +76,15 @@ describe('Tool', () => {
     describe('parseStream', () => {
         const parseStreamOptions = { abortSignal: new AbortController().signal, chunkSize: undefined, dataFormatId: 'dtv', encodingId: 'utf-8', valueDelimiterId: ',' } as const;
 
-        async function parseStream(stream: ReadableStream<Uint8Array>, options: Partial<ParseStreamOptions> = {}): Promise<{ chunks: ParsedRecord[][]; summary: RetrieveRecordsSummary }> {
+        async function parseStream(stream: ReadableStream<Uint8Array>, options: Partial<ParseStreamOptions> = {}): Promise<{ chunks: ParsedRecord[][]; summary: ParseStreamSummary }> {
             const chunks: ParsedRecord[][] = [];
-            const summary = await new Tool().parseStream(stream, { ...parseStreamOptions, ...options }, (_typeId, records) => {
-                chunks.push(records);
-            });
-            return { chunks, summary };
+            const parsing = new Tool().parseStream(stream, { ...parseStreamOptions, ...options });
+            let result = await parsing.next();
+            while (result.done !== true) {
+                chunks.push(result.value.records);
+                result = await parsing.next();
+            }
+            return { chunks, summary: result.value };
         }
 
         it('returns every record, the header included, with whether each value was quoted', async () => {
@@ -157,16 +160,26 @@ describe('Tool', () => {
             expect(listValues(chunks)).toEqual([[value], [value], [value]]);
         });
 
-        it('hands records over in chunks of the size asked for, waiting for each to be received', async () => {
-            const events: string[] = [];
+        it('hands records over in chunks of the size asked for', async () => {
+            const { chunks } = await parseStream(createStream('1\n2\n3\n4\n5\n'), { chunkSize: 2 });
 
-            await new Tool().parseStream(createStream('1\n2\n3\n4\n5\n'), { ...parseStreamOptions, chunkSize: 2 }, async (_typeId, records) => {
-                events.push(`start ${String(records.length)}`);
-                await Promise.resolve();
-                events.push('end');
+            expect(chunks.map((records) => records.length)).toEqual([2, 2, 1]);
+        });
+
+        it('reads no further until the next chunk is asked for, and releases the stream when the receiver stops', async () => {
+            const pull = vi.fn((controller: ReadableStreamDefaultController<Uint8Array>) => {
+                controller.enqueue(new TextEncoder().encode('1\n2\n'));
             });
+            const stream = new ReadableStream<Uint8Array>({ pull }, { highWaterMark: 0 });
+            const parsing = new Tool().parseStream(stream, { ...parseStreamOptions, chunkSize: 2 });
 
-            expect(events).toEqual(['start 2', 'end', 'start 2', 'end', 'start 1', 'end']);
+            await parsing.next();
+            const pullCount = pull.mock.calls.length;
+            await new Promise((resolve) => setTimeout(resolve, 10));
+            expect(pull).toHaveBeenCalledTimes(pullCount);
+
+            await parsing.return({} as ParseStreamSummary);
+            expect(stream.locked).toBe(false);
         });
 
         it('rejects with the reason when aborted', async () => {

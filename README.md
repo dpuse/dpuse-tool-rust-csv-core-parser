@@ -132,7 +132,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 | Type       | Dependency                                                                                      | Version | License(s)                          | Document                                                                                                                                                                                                               |
 | :--------- | :---------------------------------------------------------------------------------------------- | :-----: | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.188 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.188-LICENSE.txt)                                                                                                                                                  |
+| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.211 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.211-LICENSE.txt)                                                                                                                                                  |
 | JavaScript | [valibot](https://github.com/open-circle/valibot)                                               |  1.5.0  | MIT                                 | [LICENSE](licenses/downloads/valibot@1.5.0-LICENSE.txt)                                                                                                                                                                |
 | Rust       | [cfg-if](https://github.com/rust-lang/cfg-if)                                                   |  1.0.4  | MIT OR Apache-2.0                   | [LICENSE-APACHE](licenses/downloads/cfg-if@1.0.4-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/cfg-if@1.0.4-LICENSE-MIT)                                                                                            |
 | Rust       | [console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)                |  0.1.7  | Apache-2.0/MIT                      | [LICENSE-APACHE](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-MIT)                                                        |
@@ -166,13 +166,13 @@ The dependency tree below shows how each package in the table above is reached �
 
 #### JavaScript
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.188 — this month: 2026-11-07
-    - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — 1 mth ago: 2026-09-09
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.211 — this month: 2026-11-11
+    - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — 2 mths ago: 2026-09-09
 
 #### Rust
 
 - **dpuse-tool-rust-csv-core-parser** 0.1.0 — this project's Rust code, compiled into its WebAssembly
-    - **[console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)** 0.1.7 — 60 mths ago: 2021-10-11 ⚠️
+    - **[console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)** 0.1.7 — 61 mths ago: 2021-10-11 ⚠️
         - **[cfg-if](https://github.com/rust-lang/cfg-if)** 1.0.4 — 12 mths ago: 2025-10-15 ⚠️ → latest: 1.0.5 — 1 mth ago: 2026-09-16 ❗
         - **[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
             - **[cfg-if](https://github.com/rust-lang/cfg-if)** 1.0.4 — 12 mths ago: 2025-10-15 ⚠️ → latest: 1.0.5 — 1 mth ago: 2026-09-16 ❗
@@ -180,28 +180,28 @@ The dependency tree below shows how each package in the table above is reached �
             - **[wasm-bindgen-shared](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/shared)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
                 - **[unicode-ident](https://github.com/dtolnay/unicode-ident)** 1.0.24 — 8 mths ago: 2026-02-16 ⚠️ → latest: 1.0.27 — this month: 2026-10-12 ❗
     - **[csv-core](https://github.com/BurntSushi/rust-csv)** 0.1.13 — 12 mths ago: 2025-10-17 ⚠️
-        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
-    - **[futures](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-            - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-            - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-executor](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-            - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-            - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-            - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 3 mths ago: 2026-07-08 ❗
+        - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 4 mths ago: 2026-07-08 ❗
+    - **[futures](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+            - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+            - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-executor](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+            - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+            - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+            - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[futures-channel](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[futures-core](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+                - **[memchr](https://github.com/BurntSushi/memchr)** 2.8.0 — 9 mths ago: 2026-02-06 ⚠️ → latest: 2.8.3 — 4 mths ago: 2026-07-08 ❗
                 - **[pin-project-lite](https://github.com/taiki-e/pin-project-lite)** 0.2.17 — 8 mths ago: 2026-02-27 ⚠️
                 - **[slab](https://github.com/tokio-rs/slab)** 0.4.12 — 9 mths ago: 2026-01-31 ⚠️
-        - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
-        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
+        - **[futures-io](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-sink](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-task](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
+        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
     - **[js-sys](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/js-sys)** 0.3.91 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.3.107 — this month: 2026-10-30 ❗
         - **[once_cell](https://github.com/matklad/once_cell)** 1.21.4 — 7 mths ago: 2026-03-12 ⚠️
         - **[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
@@ -214,12 +214,12 @@ The dependency tree below shows how each package in the table above is reached �
     - **[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
     - **[wasm-bindgen-futures](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/futures)** 0.4.64 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.4.80 — this month: 2026-10-30 ❗
         - **[cfg-if](https://github.com/rust-lang/cfg-if)** 1.0.4 — 12 mths ago: 2025-10-15 ⚠️ → latest: 1.0.5 — 1 mth ago: 2026-09-16 ❗
-        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
+        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
         - **[js-sys](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/js-sys)** 0.3.91 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.3.107 — this month: 2026-10-30 ❗
         - **[once_cell](https://github.com/matklad/once_cell)** 1.21.4 — 7 mths ago: 2026-03-12 ⚠️
         - **[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
-    - **[wasm-streams](https://github.com/MattiasBuelens/wasm-streams/)** 0.4.2 — 24 mths ago: 2024-10-25 ⚠️ → latest: 0.7.0 — 1 mth ago: 2026-09-14 ❗
-        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 2 mths ago: 2026-08-11 ❗
+    - **[wasm-streams](https://github.com/MattiasBuelens/wasm-streams/)** 0.4.2 — 24 mths ago: 2024-10-25 ⚠️ → latest: 0.7.1 — this month: 2026-11-08 ❗
+        - **[futures-util](https://github.com/rust-lang/futures-rs)** 0.3.32 — 8 mths ago: 2026-02-15 ⚠️ → latest: 0.3.34 — 3 mths ago: 2026-08-11 ❗
         - **[js-sys](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/js-sys)** 0.3.91 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.3.107 — this month: 2026-10-30 ❗
         - **[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen)** 0.2.114 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.2.130 — this month: 2026-10-30 ❗
         - **[wasm-bindgen-futures](https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/futures)** 0.4.64 — 8 mths ago: 2026-02-27 ⚠️ → latest: 0.4.80 — this month: 2026-10-30 ❗
@@ -244,9 +244,9 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 | &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.7%&nbsp;·&nbsp;16.0&nbsp;kB                                     |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░`&nbsp;1.0%&nbsp;·&nbsp;1.4&nbsp;kB                                       |
 | **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 30.0&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.7&nbsp;kB&nbsp;·&nbsp;16.7%&nbsp;of&nbsp;the&nbsp;build   |
-| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `████████████████░░░░`&nbsp;78.0%&nbsp;·&nbsp;23.4&nbsp;kB                                     |
-| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `██░░░░░░░░░░░░░░░░░░`&nbsp;11.9%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.0%&nbsp;·&nbsp;3.0&nbsp;kB                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `████████████████░░░░`&nbsp;77.9%&nbsp;·&nbsp;23.4&nbsp;kB                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `██░░░░░░░░░░░░░░░░░░`&nbsp;12.0%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.1%&nbsp;·&nbsp;3.0&nbsp;kB                                      |
 
 Bars show each row's share of its output file.
 
