@@ -245,7 +245,8 @@ function constructUtf8Transcoder(encodingId: string): Utf8Transcoder | undefined
     };
 }
 
-// Builds a record of '{ value, valueWasQuoted }' objects for each record in the batch, which is freed once read.
+// Builds each record in the batch, which is freed once read. A value with nothing written, such as ',,', is null, and
+// an empty quoted value, '""', stays an empty string, so the two can still be told apart.
 function unpackRecordBatch(batch: RustModule.RecordBatch): ParsedRecord[] {
     const recordValueCounts = batch.takeRecordValueCounts();
     const text = batch.takeText();
@@ -259,7 +260,7 @@ function unpackRecordBatch(batch: RustModule.RecordBatch): ParsedRecord[] {
         const record: ParsedRecord = [];
         for (let index = 0; index < valueCount; index++) {
             const valueEnd = valueEnds[valueIndex] ?? valueStart;
-            record.push({ value: text.slice(valueStart, valueEnd), valueWasQuoted: valueQuoted[valueIndex] === 1 });
+            record.push(valueEnd === valueStart && valueQuoted[valueIndex] !== 1 ? null : text.slice(valueStart, valueEnd));
             valueStart = valueEnd;
             valueIndex++;
         }

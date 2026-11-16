@@ -24,8 +24,8 @@ function createStream(...chunks: string[]): ReadableStream<Uint8Array> {
     });
 }
 
-function listValues(chunks: ParsedRecord[][]): (string | null)[][] {
-    return chunks.flat().map((record) => record.map((parsedValue) => parsedValue.value));
+function listValues(chunks: ParsedRecord[][]): ParsedRecord[] {
+    return chunks.flat();
 }
 
 describe('Tool', () => {
@@ -87,18 +87,12 @@ describe('Tool', () => {
             return { chunks, summary: result.value };
         }
 
-        it('returns every record, the header included, with whether each value was quoted', async () => {
+        it('returns every record, the header included, with null for nothing written and an empty string for ""', async () => {
             const { chunks, summary } = await parseStream(createStream('"a",b\n', ',""\n'));
 
             expect(chunks.flat()).toEqual([
-                [
-                    { value: 'a', valueWasQuoted: true },
-                    { value: 'b', valueWasQuoted: false }
-                ],
-                [
-                    { value: '', valueWasQuoted: false },
-                    { value: '', valueWasQuoted: true }
-                ]
+                ['a', 'b'],
+                [null, '']
             ]);
             expect(summary).toEqual({ byteCount: 10, commentLineCount: 0, emptyLineCount: 1, lineCount: 3, nonUniformRecordCount: 0, recordCount: 2 });
         });
@@ -114,10 +108,10 @@ describe('Tool', () => {
             expect(summary.emptyLineCount).toBe(0);
         });
 
-        it('reads a blank line as a record of one empty value, and counts uneven records, as csv-parse does', async () => {
+        it('reads a blank line as a record of one value with nothing written, and counts uneven records, as csv-parse does', async () => {
             const { chunks, summary } = await parseStream(createStream('a,b\n\n1\n1,2,3\n'));
 
-            expect(listValues(chunks)).toEqual([['a', 'b'], [''], ['1'], ['1', '2', '3']]);
+            expect(listValues(chunks)).toEqual([['a', 'b'], [null], ['1'], ['1', '2', '3']]);
             expect(summary.nonUniformRecordCount).toBe(3);
             expect(summary.recordCount).toBe(4);
         });
@@ -204,10 +198,7 @@ describe('Tool', () => {
             expect(result.valueDelimiterId).toBe(';');
             expect(result.recordDelimiterId).toBe('\n');
             expect(result.issues).toEqual([]);
-            expect(result.parsedRecords[1]).toEqual([
-                { value: '1', valueWasQuoted: false },
-                { value: '2', valueWasQuoted: true }
-            ]);
+            expect(result.parsedRecords[1]).toEqual(['1', '2']);
         });
     });
 
