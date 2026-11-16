@@ -132,7 +132,7 @@ License data is updated each time `npm run document` is run, using [license-chec
 
 | Type       | Dependency                                                                                      | Version | License(s)                          | Document                                                                                                                                                                                                               |
 | :--------- | :---------------------------------------------------------------------------------------------- | :-----: | :---------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.225 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.225-LICENSE.txt)                                                                                                                                                  |
+| JavaScript | [@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)                                    | 1.0.228 | MIT                                 | [LICENSE](licenses/downloads/@dpuse/dpuse-shared@1.0.228-LICENSE.txt)                                                                                                                                                  |
 | JavaScript | [valibot](https://github.com/open-circle/valibot)                                               |  1.5.0  | MIT                                 | [LICENSE](licenses/downloads/valibot@1.5.0-LICENSE.txt)                                                                                                                                                                |
 | Rust       | [cfg-if](https://github.com/rust-lang/cfg-if)                                                   |  1.0.4  | MIT OR Apache-2.0                   | [LICENSE-APACHE](licenses/downloads/cfg-if@1.0.4-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/cfg-if@1.0.4-LICENSE-MIT)                                                                                            |
 | Rust       | [console_error_panic_hook](https://github.com/rustwasm/console_error_panic_hook)                |  0.1.7  | Apache-2.0/MIT                      | [LICENSE-APACHE](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-APACHE) [LICENSE-MIT](licenses/downloads/console_error_panic_hook@0.1.7-LICENSE-MIT)                                                        |
@@ -166,7 +166,7 @@ The dependency tree below shows how each package in the table above is reached �
 
 #### JavaScript
 
-- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.225 — this month: 2026-11-15
+- **[@dpuse/dpuse-shared](https://github.com/dpuse/dpuse-shared)** 1.0.228 — this month: 2026-11-16
     - **[valibot](https://github.com/open-circle/valibot)** 1.5.0 — 2 mths ago: 2026-09-09
 
 #### Rust
@@ -244,9 +244,9 @@ _Note: Sonda's Vite reports currently exclude CSS files, since Vite does not gen
 | &nbsp;&nbsp;&nbsp;&nbsp;wasm → ….js                                   | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.4%&nbsp;·&nbsp;15.4&nbsp;kB                                     |
 | &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `░░░░░░░░░░░░░░░░░░░░`&nbsp;0.9%&nbsp;·&nbsp;1.4&nbsp;kB                                       |
 | **dist/dpuse-tool-rust-csv-core-parser.es.js**                        | 31.4&nbsp;kB&nbsp;·&nbsp;gzip&nbsp;6.9&nbsp;kB&nbsp;·&nbsp;17.5%&nbsp;of&nbsp;the&nbsp;build   |
-| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `████████████████░░░░`&nbsp;78.2%&nbsp;·&nbsp;24.5&nbsp;kB                                     |
+| &nbsp;&nbsp;&nbsp;&nbsp;@dpuse/dpuse-shared → dist/dpuse-shared.es.js | `████████████████░░░░`&nbsp;78.3%&nbsp;·&nbsp;24.5&nbsp;kB                                     |
 | &nbsp;&nbsp;&nbsp;&nbsp;src → index.ts                                | `██░░░░░░░░░░░░░░░░░░`&nbsp;11.6%&nbsp;·&nbsp;3.6&nbsp;kB                                      |
-| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.2%&nbsp;·&nbsp;3.2&nbsp;kB                                      |
+| &nbsp;&nbsp;&nbsp;&nbsp;(bundler output, whitespace & JSON)           | `██░░░░░░░░░░░░░░░░░░`&nbsp;10.1%&nbsp;·&nbsp;3.2&nbsp;kB                                      |
 
 Bars show each row's share of its output file.
 
