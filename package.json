@@ -1,6 +1,6 @@
 {
     "name": "@dpuse/dpuse-tool-rust-csv-core-parser",
-    "version": "1.0.120",
+    "version": "1.0.121",
     "private": false,
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
@@ -47,7 +47,7 @@
         "fsevents@2.3.3": true,
         "unrs-resolver@1.12.2": true,
         "esbuild@0.28.2": true,
-        "workerd@1.20261110.1": true
+        "workerd@1.20261113.1": true
     },
     "scripts": {
         "audit": "node -e \"import('@dpuse/dpuse-development').then(m => m.auditDependencies())\"",
@@ -62,21 +62,21 @@
         "test": "node -e \"import('@dpuse/dpuse-development').then(m => m.testProject())\""
     },
     "dependencies": {
-        "@dpuse/dpuse-shared": "^1.0.212"
+        "@dpuse/dpuse-shared": "^1.0.225"
     },
     "devDependencies": {
-        "@dpuse/dpuse-development": "^1.0.153",
+        "@dpuse/dpuse-development": "^1.0.155",
         "@dpuse/eslint-config-dpuse": "^1.0.150",
         "@types/node": "^26.6.6",
         "@types/trusted-types": "^2.0.7",
         "@vitest/coverage-v8": "^5.1.0",
-        "eslint": "^10.14.0",
-        "prettier": "^3.10.0",
+        "eslint": "^10.15.0",
+        "prettier": "^3.10.1",
         "sonda": "^0.14.0",
         "typescript": "^6.0.3",
         "vite": "^8.3.8",
         "vite-plugin-dts": "^5.1.2",
         "vitest": "^5.1.0",
-        "wrangler": "^4.160.1"
+        "wrangler": "^4.162.0"
     }
 }

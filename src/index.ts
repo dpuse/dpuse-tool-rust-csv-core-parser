@@ -247,7 +247,10 @@ function constructUtf8Transcoder(encodingId: string): Utf8Transcoder | undefined
 
 // Builds a record of '{ value, valueWasQuoted }' objects for each record in the batch, which is freed once read.
 function unpackRecordBatch(batch: RustModule.RecordBatch): ParsedRecord[] {
-    const { recordValueCounts, text, valueEnds, valueQuoted } = batch;
+    const recordValueCounts = batch.takeRecordValueCounts();
+    const text = batch.takeText();
+    const valueEnds = batch.takeValueEnds();
+    const valueQuoted = batch.takeValueQuoted();
     batch.free();
     const records: ParsedRecord[] = [];
     let valueIndex = 0;

@@ -177,15 +177,37 @@ impl CsvSession {
 /// The records completed by one call of `RecordReader`, packed so that crossing into JavaScript costs a few copies
 /// rather than one per value. The values are joined into `text`, and each ends at its entry in `value_ends`, counted
 /// in UTF-16 code units so JavaScript can slice them out directly.
-#[wasm_bindgen(getter_with_clone)]
+#[wasm_bindgen]
 pub struct RecordBatch {
-    pub text: String,
-    #[wasm_bindgen(js_name = valueEnds)]
-    pub value_ends: Vec<u32>,
-    #[wasm_bindgen(js_name = valueQuoted)]
-    pub value_quoted: Vec<u8>, // 1 where the value was quoted in the text.
-    #[wasm_bindgen(js_name = recordValueCounts)]
-    pub record_value_counts: Vec<u32>,
+    text: String,
+    value_ends: Vec<u32>,
+    value_quoted: Vec<u8>, // 1 where the value was quoted in the text.
+    record_value_counts: Vec<u32>,
+}
+
+/// Each part is moved out rather than read through a getter, because a getter must leave the field in place and so
+/// clones it before JavaScript copies it. Each part can therefore be taken only once.
+#[wasm_bindgen]
+impl RecordBatch {
+    #[wasm_bindgen(js_name = takeText)]
+    pub fn take_text(&mut self) -> String {
+        core::mem::take(&mut self.text)
+    }
+
+    #[wasm_bindgen(js_name = takeValueEnds)]
+    pub fn take_value_ends(&mut self) -> Vec<u32> {
+        core::mem::take(&mut self.value_ends)
+    }
+
+    #[wasm_bindgen(js_name = takeValueQuoted)]
+    pub fn take_value_quoted(&mut self) -> Vec<u8> {
+        core::mem::take(&mut self.value_quoted)
+    }
+
+    #[wasm_bindgen(js_name = takeRecordValueCounts)]
+    pub fn take_record_value_counts(&mut self) -> Vec<u32> {
+        core::mem::take(&mut self.record_value_counts)
+    }
 }
 
 /// Reads delimited text a chunk at a time and returns every record, the header included, as csv-parse does with the
