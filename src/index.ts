@@ -1,13 +1,13 @@
 // ── DPUse Framework
-import { ConnectorError, getValueDelimiterCharacter, ignoreErrors, parseDelimitedText, resolveDecoderId } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
+import { ConnectorError, getValueDelimiterCharacter, ignoreErrors, parseDelimitedPreview, resolveDecoderId } from '@dpuse/dpuse-shared'; // TODO: This should be  Module or Tool error?
 import type {
     ParsedRecord,
     ParsedRecordsChunk,
+    ParsePreviewOptions,
+    ParsePreviewResult,
     ParserInterface,
     ParseStreamOptions,
     ParseStreamSummary,
-    ParseTextOptions,
-    ParseTextResult,
     SampleIssue,
     ValueDelimiterId
 } from '@dpuse/dpuse-shared';
@@ -125,15 +125,21 @@ export class Tool implements ParserInterface {
     }
 
     /**
-     * Parse text. 'csv-core' reads any text without error, so no issues are reported, and a quote left open simply
-     * runs to the end of the text.
+     * Parse preview. Reads the preview's bytes the same way as 'parseStream': UTF-8 goes straight to the reader, and any
+     * other encoding is first read as UTF-8. 'csv-core' reads any text without error, so no issues are reported, and a
+     * quote left open simply runs to the end of the preview.
      */
-    async parseText(text: string, options: ParseTextOptions): Promise<ParseTextResult> {
+    async parsePreview(bytes: Uint8Array, options: ParsePreviewOptions): Promise<ParsePreviewResult> {
         const { RecordReader } = await loadRustBindings();
-        return await parseDelimitedText(text, options, (delimitedText, delimiter): Promise<{ issues: SampleIssue[]; records: ParsedRecord[] }> => {
+        return await parseDelimitedPreview(bytes, options, (preview, delimiter): Promise<{ issues: SampleIssue[]; records: ParsedRecord[] }> => {
             const recordReader = new RecordReader(convertDelimiterToByte(delimiter));
+            const transcoder = constructUtf8Transcoder(preview.encodingId);
             try {
-                const records = unpackRecordBatch(recordReader.pushChunk(new TextEncoder().encode(delimitedText)));
+                const records = unpackRecordBatch(recordReader.pushChunk(transcoder == null ? preview.bytes : transcoder.transcode(preview.bytes)));
+                if (transcoder != null) {
+                    const finalBatch = recordReader.pushChunk(transcoder.finish());
+                    records.push(...unpackRecordBatch(finalBatch));
+                }
                 records.push(...unpackRecordBatch(recordReader.finish()));
                 return Promise.resolve({ issues: [], records });
             } finally {

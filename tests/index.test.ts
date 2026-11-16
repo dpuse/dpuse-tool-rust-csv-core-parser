@@ -191,14 +191,22 @@ describe('Tool', () => {
         });
     });
 
-    describe('parseText', () => {
+    describe('parsePreview', () => {
         it('finds the delimiter and reads every record, with no issues', async () => {
-            const result = await new Tool().parseText('a;b\n1;"2"\n', { dataFormatId: 'dtv', isComplete: true, valueDelimiterIds: [',', ';'] });
+            const bytes = new TextEncoder().encode('a;b\n1;"2"\n');
+            const result = await new Tool().parsePreview(bytes, { dataFormatId: 'dtv', encodingId: 'utf-8', isComplete: true, valueDelimiterIds: [',', ';'] });
 
             expect(result.valueDelimiterId).toBe(';');
             expect(result.recordDelimiterId).toBe('\n');
             expect(result.issues).toEqual([]);
             expect(result.parsedRecords[1]).toEqual(['1', '2']);
+        });
+
+        it('reads a preview in another encoding as UTF-8, as parseStream does', async () => {
+            const bytes = new Uint8Array([0x63, 0x61, 0x66, 0xe9, 0x3b, 0x31, 0x0a]); // 'café;1' in windows-1252.
+            const result = await new Tool().parsePreview(bytes, { dataFormatId: 'dtv', encodingId: 'windows-1252', isComplete: true, valueDelimiterIds: [';'] });
+
+            expect(result.parsedRecords).toEqual([['café', '1']]);
         });
     });
 

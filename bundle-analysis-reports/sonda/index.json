@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": "0.14.0",
-    "generatedAt": "2026-11-16T12:22:59.036Z",
+    "generatedAt": "2026-11-16T15:48:28.495Z",
     "integration": "vite",
     "sources": false,
     "gzip": true,
@@ -21,7 +21,7 @@
       "name": "[unassigned]",
       "type": "other",
       "format": "other",
-      "uncompressed": 3253,
+      "uncompressed": 3278,
       "gzip": 223,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
@@ -48,8 +48,8 @@
       "kind": "asset",
       "name": "dist/dpuse-tool-rust-csv-core-parser.es.js",
       "type": "script",
-      "uncompressed": 32111,
-      "gzip": 7046,
+      "uncompressed": 32345,
+      "gzip": 7103,
       "brotli": 0
     },
     {
@@ -57,15 +57,15 @@
       "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 71938
+      "uncompressed": 72274
     },
     {
       "kind": "chunk",
       "name": "node_modules/@dpuse/dpuse-shared/dist/dpuse-shared.es.js",
       "type": "script",
       "format": "esm",
-      "uncompressed": 25137,
-      "gzip": 5297,
+      "uncompressed": 25238,
+      "gzip": 5337,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     },
@@ -91,15 +91,15 @@
       "name": "src/index.ts",
       "type": "script",
       "format": "esm",
-      "uncompressed": 7309
+      "uncompressed": 7720
     },
     {
       "kind": "chunk",
       "name": "src/index.ts",
       "type": "script",
       "format": "esm",
-      "uncompressed": 3721,
-      "gzip": 1526,
+      "uncompressed": 3829,
+      "gzip": 1543,
       "brotli": 0,
       "parent": "dist/dpuse-tool-rust-csv-core-parser.es.js"
     }
